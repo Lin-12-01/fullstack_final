@@ -78,6 +78,12 @@ export const api = {
     }),
   removeTeamMember: (id, userId) =>
     request(`/api/teams/${id}/members/${userId}`, { method: 'DELETE' }),
+  getTeamProjects: (teamId) => request(`/api/teams/${teamId}/projects`),
+  createTeamProject: (teamId, body) =>
+    request(`/api/teams/${teamId}/projects`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+    }),
 };
 
 export default api;

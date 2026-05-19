@@ -7,6 +7,8 @@ const {
   deleteTeam,
   addMember,
   removeMember,
+  createTeamProject,
+  getTeamProjects,
 } = require('../controllers/teamController');
 const { protect } = require('../middleware/authMiddleware');
 
@@ -15,6 +17,8 @@ const router = express.Router();
 router.use(protect);
 router.route('/').get(getTeams).post(createTeam);
 router.route('/:id').get(getTeamById).patch(updateTeam).delete(deleteTeam);
+router.get('/:id/projects', getTeamProjects);
+router.post('/:id/projects', createTeamProject);
 router.post('/:id/members', addMember);
 router.delete('/:id/members/:userId', removeMember);
 
