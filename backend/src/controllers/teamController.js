@@ -142,8 +142,7 @@ const addMember = async (req, res) => {
   team.members.push(user._id);
   await team.save();
 
-  await
-  addMemberToTeamProjects(team, user._id);
+  await addMemberToTeamProjects(team, user._id);
 
   const populated = await populateTeam(Team.findById(team._id));
   res.json(populated);

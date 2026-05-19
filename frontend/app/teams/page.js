@@ -53,6 +53,15 @@ export default function TeamsPage() {
     loadTeams();
   };
 
+  const handleCreateProject = async (teamId, body) => {
+    try {
+      await api.createTeamProject(teamId, body);
+      loadTeams();
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
     <ProtectedRoute>
       <div className="container">
@@ -103,6 +112,7 @@ export default function TeamsPage() {
                 currentUserId={user?._id}
                 onAddMember={handleAddMember}
                 onRemoveMember={handleRemoveMember}
+                onCreateProject={handleCreateProject}
               />
               {team.owner?._id === user?._id && (
                 <button
@@ -118,6 +128,6 @@ export default function TeamsPage() {
           ))}
         </div>
       </div>
-    </ProtectedRoute>
+      </ProtectedRoute>
   );
 }
