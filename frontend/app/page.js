@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import ProtectedRoute from '../../components/ProtectedRoute';
-import TeamCard from '../../components/TeamCard';
-import { useAuth } from '../../context/AuthContext';
-import { api } from '../../lib/api';
-import styles from '../../styles/components.module.css';
+import ProtectedRoute from '../components/ProtectedRoute';
+import TeamCard from '../components/TeamCard';
+import { useAuth } from '../context/AuthContext';
+import api from '../lib/api';
+import styles from '../styles/components.module.css';
 
 export default function TeamsPage() {
   const { user } = useAuth();
